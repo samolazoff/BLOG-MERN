@@ -40,7 +40,7 @@ export const login = async (req, res) => {
                 const token = jwt.sign(
                     {id: newUser._id},
                     process.env.JWT_SECRET,
-                    {expiresIn: '300'})
+                    {expiresIn: '300'});
                 res.json({
                     token,
                     newUser,
@@ -63,8 +63,19 @@ export const login = async (req, res) => {
 
 export const getMe = async (req, res) => {
     try {
-        
+        const user = await User.findById(req.userId);
+        if(!user){
+            res.json({
+                message: 'USER is NONE!!!'
+            })
+        }else{
+            const token = jwt.sign(
+                {id: user._id},
+                process.env.JWT_SECRET,
+                {expiresIn: '300'});
+            res.json({user,token})
+        }
     } catch (error) {
-        console.log(error);
+        res.json({message:'Aceess is NONE'})
     }
 }

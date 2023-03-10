@@ -3,7 +3,7 @@ import {Link, NavLink} from'react-router-dom';
 
 const Navbar=()=>{
 
-    const isAuth = true;
+    const isAuth = false;
 
     const activeStyles = {
         color: 'white'
@@ -11,7 +11,7 @@ const Navbar=()=>{
 
     return (
         <div className='flex py-4 justify-between items-center'>
-            <span className="flex justify-center items-center w-6 h-6 dg-gray-600 text-xs text-white rounded-sm">Logo</span>
+            <h1 className=" logo flex justify-center items-center w-6 h-6 dg-gray-600 text-ss text-white rounded-sm">Logo</h1>
             {
                 isAuth && (
                     <ul className='flex gap-8'>
